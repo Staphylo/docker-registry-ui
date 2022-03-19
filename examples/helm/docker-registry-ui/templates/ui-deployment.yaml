@@ -31,6 +31,14 @@ spec:
               value: {{ include "docker-registry-ui.url-value" . | quote }}
             - name: PULL_URL
               value: {{ include "docker-registry-ui.pull" . | quote }}
+            - name: SHOW_CONTENT_DIGEST
+              value: {{ .Values.ui.show_content_digest | quote }}
+            - name: SINGLE_REGISTRY
+              value: {{ .Values.ui.single_registry | quote }}
+            - name: DEFAULT_REGISTRIES
+              value: {{ join "," .Values.ui.default_registries }}
+            - name: READ_ONLY_REGISTRIES
+              value: {{ .Values.ui.read_only_registries | quote }}
           ports:
             - name: http
               containerPort: 80

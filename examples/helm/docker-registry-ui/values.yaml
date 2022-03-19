@@ -10,12 +10,20 @@ ui:
   delete_images: false
   # UI behave as a proxy of the registry
   proxy: true
+  # show content digest
+  show_content_digest: false
+  # only manage a single registry (legacy)
+  single_registry: false
+  # disable runtime addition of registries
+  read_only_registries: false
+  # list of registries to manage
+  default_registries: []
 
   replicaCount: 1
   image:
     registry: docker.io
     repository: joxit/docker-registry-ui
-    tag: static
+    tag: 2.1.0
     pullPolicy: Always
   probe:
     liveness: true
@@ -41,7 +49,7 @@ ui:
 
   ingress:
     enabled: false
-    className: "nginx"
+    className: ""
     annotations: {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
